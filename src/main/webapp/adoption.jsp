@@ -169,9 +169,9 @@
         <div class="row">
             <%
                 // Database connection setup
-                String jdbcURL = "jdbc:mysql://localhost:3306/petshop"; // Replace with your database details
+                String jdbcURL = "jdbc:mysql://switchback.proxy.rlwy.net:49496/petshop"; // Replace with your database details
                 String jdbcUsername = "root";
-                String jdbcPassword = "admin";
+                String jdbcPassword = "CaxLOWsGEHcaUIMpeUqtCmLucuHVTNGS";
 
                 Connection connection = null;
                 PreparedStatement preparedStatement = null;
@@ -180,7 +180,7 @@
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-                    String selectAllPetsSQL = "SELECT * FROM Pets";
+                    String selectAllPetsSQL = "SELECT * FROM pets";
                     preparedStatement = connection.prepareStatement(selectAllPetsSQL);
                     resultSet = preparedStatement.executeQuery();
 

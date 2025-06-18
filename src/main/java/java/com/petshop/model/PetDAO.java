@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PetDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/petshop";
+    private String jdbcURL = "jdbc:mysql://switchback.proxy.rlwy.net:49496/petshop";
     private String jdbcUsername = "root";
-    private String jdbcPassword = "admin";
+    private String jdbcPassword = "CaxLOWsGEHcaUIMpeUqtCmLucuHVTNGS";
 
-    private static final String INSERT_PETS_SQL = "INSERT INTO Pets (name, title, details, image) VALUES (?, ?, ?, ?);";
-    private static final String SELECT_ALL_PETS = "SELECT * FROM Pets;";
+    private static final String INSERT_PETS_SQL = "INSERT INTO pets (name, title, details, image) VALUES (?, ?, ?, ?);";
+    private static final String SELECT_ALL_PETS = "SELECT * FROM pets;";
 
     protected Connection getConnection() {
         Connection connection = null;

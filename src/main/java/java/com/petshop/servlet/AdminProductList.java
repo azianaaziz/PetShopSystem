@@ -15,9 +15,9 @@ import com.petshop.model.Product;
 @WebServlet(name = "AdminProductList", urlPatterns = {"/admin"})
 public class AdminProductList extends HttpServlet {
 
-    private String jdbcURL = "jdbc:mysql://localhost:3306/petshop"; 
+    private String jdbcURL = "jdbc:mysql://switchback.proxy.rlwy.net:49496/petshop"; 
     private String jdbcUsername = "root"; 
-    private String jdbcPassword = "admin"; 
+    private String jdbcPassword = "CaxLOWsGEHcaUIMpeUqtCmLucuHVTNGS"; 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");

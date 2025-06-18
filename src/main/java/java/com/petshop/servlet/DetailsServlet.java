@@ -17,7 +17,7 @@ public class DetailsServlet extends HttpServlet {
         String postcode = request.getParameter("postcode");
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/petshop", "root", "admin");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://switchback.proxy.rlwy.net:49496/petshop", "root", "CaxLOWsGEHcaUIMpeUqtCmLucuHVTNGS");
             String sql = "INSERT INTO user_details (name, phone, address, city, postcode) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, name);
