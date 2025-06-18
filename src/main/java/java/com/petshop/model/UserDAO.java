@@ -42,15 +42,15 @@ public class UserDAO {
     }
 
     // For PET table (used in PetServlet)
-    private static final String INSERT_PET_SQL = "INSERT INTO Pets (name, title, details, image) VALUES (?, ?, ?, ?)";
-    private static final String SELECT_ALL_PETS = "SELECT * FROM Pets";
+    private static final String INSERT_PET_SQL = "INSERT INTO pets (name, title, details, image) VALUES (?, ?, ?, ?)";
+    private static final String SELECT_ALL_PETS = "SELECT * FROM pets";
 
     // For USER table (used in Registration/Login)
-    private static final String INSERT_USERS_SQL = "INSERT INTO Users (fullName, phoneNumber, username, password, email) VALUES (?, ?, ?, ?, ?)";
-    private static final String SELECT_ALL_USERS = "SELECT * FROM Users";
-    private static final String SELECT_USER_BY_USERNAME = "SELECT * FROM Users WHERE username = ?";
-    private static final String UPDATE_USER_SQL = "UPDATE Users SET fullName = ?, phoneNumber = ?, username = ?, password = ?, email = ? WHERE id = ?";
-    private static final String DELETE_USER_SQL = "DELETE FROM Users WHERE username = ?";
+    private static final String INSERT_USERS_SQL = "INSERT INTO users (fullName, phoneNumber, username, password, email) VALUES (?, ?, ?, ?, ?)";
+    private static final String SELECT_ALL_USERS = "SELECT * FROM users";
+    private static final String SELECT_USER_BY_USERNAME = "SELECT * FROM users WHERE username = ?";
+    private static final String UPDATE_USER_SQL = "UPDATE users SET fullName = ?, phoneNumber = ?, username = ?, password = ?, email = ? WHERE id = ?";
+    private static final String DELETE_USER_SQL = "DELETE FROM users WHERE username = ?";
 
     // ========== PET METHODS (for PetServlet) ==========
 
