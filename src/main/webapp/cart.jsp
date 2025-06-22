@@ -31,11 +31,12 @@
             background-color: rgba(0,0,0,0.7);
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            color: white;
         }
 
         .cart-container h2 {
             text-align: center;
-            color: var(--primary);
+            color: white;
             margin-bottom: 20px;
         }
 
@@ -43,6 +44,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
+            color: white;
         }
 
         th, td {
@@ -50,11 +52,12 @@
             text-align: center;
             border: 1px solid #ccc;
             background-color: rgba(255, 255, 255, 0.1);
+            color: white;
         }
 
         th {
             background-color: rgba(255, 255, 255, 0.2);
-            color: var(--primary);
+            color: white;
         }
 
         form {
@@ -80,7 +83,7 @@
             padding: 10px;
             font-size: 18px;
             background-color: var(--primary);
-            color: #fff;
+            color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
@@ -92,7 +95,7 @@
 
         .empty-message {
             text-align: center;
-            color: var(--bg);
+            color: white;
             font-size: 16px;
             margin-top: 20px;
         }
