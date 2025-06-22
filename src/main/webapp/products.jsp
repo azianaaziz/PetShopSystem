@@ -38,9 +38,9 @@
         <p>"Introducing our premier pet product, a meticulously crafted blend of superior nutrition, irresistible taste, and thoughtful design, ensuring your furry companion enjoys the highest quality of care, health, and happiness."</p>
         <div class="row">
             <%
-                String url = "jdbc:mysql://localhost:3306/petshop";
+                String url = "jdbc:mysql://switchback.proxy.rlwy.net:49496/petshop";
                 String username = "root";
-                String password = "admin";
+                String password = "CaxLOWsGEHcaUIMpeUqtCmLucuHVTNGS";
 
                 Connection conn = null;
                 Statement stmt = null;
