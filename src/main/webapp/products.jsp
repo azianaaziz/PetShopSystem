@@ -67,8 +67,8 @@
                             out.println("<input type='hidden' name='name' value='" + name + "'/>");
                             out.println("<input type='hidden' name='price' value='" + price + "'/>");
                             out.println("<button type='submit' style='background:none;border:none;cursor:pointer;'>");
-                            out.println("<a href='cart.jsp'><i data-feather='shopping-bag'></i></a>");
-                            out.println("</button>");
+                            out.println("<i data-feather='shopping-bag'></i>");
+                            out.println("</button>"); 
                             out.println("</form>");
                             out.println("<a href='#' class='item-detail-button'><i data-feather='eye'></i></a>");
                             out.println("</div>");
