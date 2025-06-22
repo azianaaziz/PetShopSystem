@@ -14,7 +14,7 @@
 
         if (isValid) {
             session.setAttribute("user", username);
-            response.sendRedirect("adminDashboard.jsp");
+            response.sendRedirect("redirect.jsp");
             return; // Important to stop further JSP processing!
         } else {
             errorMessage = "Invalid username or password.";
