@@ -62,35 +62,35 @@
 
     .hover-menu {
         position: relative;
+        display: inline-block;
+    }
+
+    .hover-menu:hover .hover-menu-content,
+    .hover-menu:focus-within .hover-menu-content {
+        display: block; /* stays open when focus or hover */
     }
 
     .hover-menu-content {
         display: none;
         position: absolute;
         right: 0;
-        top: 40px;
-        background-color: #222;
-        min-width: 150px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        background-color: black;
+        min-width: 140px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 999;
         border-radius: 5px;
         overflow: hidden;
-        z-index: 999;
     }
 
     .hover-menu-content a {
+        color: white;
+        padding: 10px 16px;
         display: block;
-        padding: 12px 16px;
-        color: #fff;
         text-decoration: none;
-        font-family: 'Poppins', sans-serif;
     }
 
     .hover-menu-content a:hover {
-        background-color: #444;
-    }
-
-    .hover-menu:hover .hover-menu-content {
-        display: block;
+        background-color: #333;
     }
 
 </style>
@@ -103,15 +103,15 @@
     </div>
     <div class="navbar-extra">
         <div class="hover-menu">
-            <a href="#" id="user-button"><i data-feather="user"></i></a>
-            <div class="hover-menu-content">
-                <% if (session.getAttribute("user") == null) { %>
-                    <a href="admin-login.jsp">Admin Login</a>
-                <% } else { %>
-                    <a href="LogoutServlet">Logout</a>
-                <% } %>
-            </div>
+        <a href="#" id="user-button" tabindex="0"><i data-feather="user"></i></a>
+        <div class="hover-menu-content">
+            <% if (session.getAttribute("adminUsername") == null) { %>
+                <a href="admin-login.jsp">Admin Login</a>
+            <% } else { %>
+                <a href="LogoutServlet">Logout</a>
+            <% } %>
         </div>
+    </div>
     </div>
 </nav>
 
