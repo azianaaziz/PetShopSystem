@@ -28,6 +28,14 @@
         <servlet-name>AdminLoginServlet</servlet-name>
         <servlet-class>com.petshop.servlet.AdminLoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PetCommunityServlet</servlet-name>
+        <servlet-class>java.com.petshop.servlet.PetCommunityServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostDetailServlet</servlet-name>
+        <servlet-class>java.com.petshop.servlet.PostDetailServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PetServlet</servlet-name>
         <url-pattern>/PetServlet</url-pattern>
@@ -83,6 +91,14 @@
     <servlet-mapping>
         <servlet-name>AdminLoginServlet</servlet-name>
         <url-pattern>/AdminLoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PetCommunityServlet</servlet-name>
+        <url-pattern>/PetCommunityServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostDetailServlet</servlet-name>
+        <url-pattern>/PostDetailServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

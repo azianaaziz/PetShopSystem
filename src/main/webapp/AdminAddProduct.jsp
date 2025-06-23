@@ -1,8 +1,3 @@
-<%-- 
-    Document   :
-    Created on : Jun 15, 2024, 2:00:17 AM
-    Author     : FAQIHAH
---%>
 
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

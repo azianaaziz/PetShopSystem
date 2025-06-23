@@ -1,8 +1,3 @@
-<%-- 
-    Document   : AdminListProducts
-    Created on : Jun 24, 2024, 1:31:52 PM
-    Author     : HIDAYAH
---%>
 
 <%@page import="java.util.List"%>
 <%@page import="com.petshop.model.Product"%>

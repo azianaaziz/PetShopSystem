@@ -29,6 +29,6 @@ public class DeletePetServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect("updateadoption.jsp");
+        response.sendRedirect("updateAdoption.jsp");
     }
 }

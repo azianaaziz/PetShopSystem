@@ -70,6 +70,7 @@
         <a href="products.jsp">Shop</a>
         <a href="adoption.jsp">Adoption</a>
         <a href="feedback.jsp">Feedback</a>
+        <a href="community.jsp">Pet Community</a>
         <a href="tips.jsp">Tips</a>
         <a href="contact.jsp">Guide</a>
     </div>
