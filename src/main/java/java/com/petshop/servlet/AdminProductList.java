@@ -12,7 +12,7 @@ import java.util.List;
 import com.petshop.model.Product;
 
 @MultipartConfig(maxFileSize = 16177215) // Upload file size up to 16MB
-@WebServlet(name = "AdminProductList", urlPatterns = {"/admin"})
+@WebServlet(name = "AdminProductList", urlPatterns = {"/admin", "/adminproductlist"})
 public class AdminProductList extends HttpServlet {
 
     private String jdbcURL = "jdbc:mysql://switchback.proxy.rlwy.net:49496/petshop"; 
@@ -48,10 +48,18 @@ public class AdminProductList extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+
+        // If "/adminproductlist" called, no action needed, list directly:
+        if (request.getServletPath().equals("/adminproductlist")) {
+            listProducts(request, response);
+            return;
+        }
+
         if (action == null) {
             response.sendRedirect(request.getContextPath() + "/admin?action=list");
             return;
         }
+
         try {
             switch (action) {
                 case "new":
@@ -71,7 +79,7 @@ public class AdminProductList extends HttpServlet {
             request.setAttribute("errorMessage", "Error handling get request: " + e.getMessage());
             request.getRequestDispatcher("/errorPage.jsp").forward(request, response);
         }
-    }
+    }          
 
     private void listProducts(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> productList = new ArrayList<>();

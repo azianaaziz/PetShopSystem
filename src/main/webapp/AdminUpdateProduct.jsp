@@ -1,9 +1,3 @@
-<%-- 
-    Document   : AddminUpdateProduct
-    Created on : Jun 24, 2024, 1:34:17 PM
-    Author     : FAQIHAH
---%>
-
 
 <%@page import="com.petshop.model.Product"%>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/update-product.css">
 </head>
 <body>
+    
 <h1>Update Product</h1>
 <%
     Product product = (Product) request.getAttribute("product");

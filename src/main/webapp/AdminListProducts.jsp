@@ -1,3 +1,8 @@
+<%-- 
+    Document   : AdminListProducts
+    Created on : 24 Jun 2025, 4:24:54 am
+    Author     : USER
+--%>
 
 <%@page import="java.util.List"%>
 <%@page import="com.petshop.model.Product"%>
@@ -11,30 +16,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main_list.css">
-    <style>
-        /* Additional styles for the logout button */
-        #logoutButton {
-            position: fixed;
-            right: 20px;
-            top: 20px;
-            padding: 10px 20px;
-            background-color: #b6895b; /* Similar to your provided CSS color scheme */
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-family: "Poppins", sans-serif;
-        }
-        #logoutButton:hover {
-            background-color: #e18b29; /* Hover effect, brighter shade */
-        }
-    </style>
+   
 </head>
 <body>
     <jsp:include page="navAdmin.jsp" />
     <h1>Product List</h1>
     <a href="<%=request.getContextPath()%>/admin?action=new" class="button-primary">Add New Product</a>
-    <button id="logoutButton" onclick="window.location.href='<%=request.getContextPath()%>/adminlogout';">Logout</button>
 
     <table border="1">
         <tr>

@@ -1,0 +1,78 @@
+/* updateAdoption.css */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4fa;
+    color: #8f613e;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #8f613e;
+    margin-bottom: 25px;
+    font-size: 28px;
+    text-align: center;
+}
+
+table {
+    width: 90%;
+    max-width: 1000px;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #e18b29;
+}
+
+th, td {
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    color: #4e342e;
+}
+
+th {
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td img {
+    width: 80px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-delete {
+    background-color: #b63838;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #992626;
+}
+
+footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #8f613e;
+    text-align: center;
+}

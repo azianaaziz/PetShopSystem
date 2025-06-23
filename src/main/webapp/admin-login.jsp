@@ -3,7 +3,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    // LOGIN LOGIC BEFORE HTML OUTPUT!
     String errorMessage = null;
     String username = request.getParameter("username");
     String password = request.getParameter("password");
@@ -14,8 +13,8 @@
 
         if (isValid) {
             session.setAttribute("user", username);
-            response.sendRedirect("redirect.jsp");
-            return; // Important to stop further JSP processing!
+            response.sendRedirect(request.getContextPath() + "/adminproductlist");
+            return;
         } else {
             errorMessage = "Invalid username or password.";
         }
