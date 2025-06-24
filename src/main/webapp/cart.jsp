@@ -78,18 +78,19 @@
             background-color: #a6764a;
         }
 
-        .checkout-btn {
-            width: 100%;
+        .checkout-btn, .action-btn {
+            width: 48%;
             padding: 10px;
-            font-size: 18px;
+            font-size: 16px;
             background-color: var(--primary);
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            margin: 5px 1%;
         }
 
-        .checkout-btn:hover {
+        .checkout-btn:hover, .action-btn:hover {
             background-color: #a6764a;
         }
 
@@ -98,6 +99,11 @@
             color: white;
             font-size: 16px;
             margin-top: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
         }
     </style>
 </head>
@@ -144,6 +150,15 @@
                 <input type="hidden" name="action" value="checkout">
                 <button type="submit" class="checkout-btn">Checkout All Items</button>
             </form>
+
+            <div class="action-buttons">
+                <form action="paymentMethode.jsp" method="get">
+                    <button type="submit" class="action-btn">Proceed Payment</button>
+                </form>
+                <form action="cart.jsp" method="get">
+                    <button type="submit" class="action-btn">Cancel</button>
+                </form>
+            </div>
         <% } else { %>
             <p class="empty-message">Your cart is empty.</p>
         <% } %>

@@ -15,220 +15,139 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/master.css"/>
+    <script src="https://unpkg.com/feather-icons"></script>
     <style>
-        .notification {
-            display: none;
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            z-index: 1000;
-        }
+        .products .row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        gap: 1.5rem;
+        margin-top: 4rem;
+      }
+
+      .products .product-card {
+        text-align: center;
+        border: 1px solid #666;
+        padding: 2rem;
+      }
+      .products .product-icons {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .products .product-icons a {
+        width: 4rem;
+        height: 4rem;
+        color: #fff;
+        margin: 0.3rem;
+        border: 1px solid #666;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .products .product-icons a:hover {
+        background-color: var(--primary);
+        border: 1px solid var(--primary);
+      }
+
+      .products .product-image {
+        padding: 1rem 0;
+      }
+
+      .products .product-image img {
+        height: 25rem;
+      }
+
+      .products .product-content h3 {
+        font-size: 2rem;
+      }
+
+      .products .product-stars {
+        font-size: 1.7rem;
+        padding: 0.8rem;
+        color: var(--primary);
+      }
+      .products .product-stars .star-full {
+        fill: var(--primary);
+      }
     </style>
 </head>
 <body>
-    <jsp:include page="nav.jsp" />
+<jsp:include page="nav.jsp" />
 
-    <section class="products" id="products">
-        <h2><span>Best </span>Products</h2>
-        <p>"Introducing our premier pet product, a meticulously crafted blend of superior nutrition, irresistible taste, and thoughtful design, ensuring your furry companion enjoys the highest quality of care, health, and happiness."</p>
-        <div class="row">
-            <%
-                String url = "jdbc:mysql://switchback.proxy.rlwy.net:49496/petshop";
-                String username = "root";
-                String password = "CaxLOWsGEHcaUIMpeUqtCmLucuHVTNGS";
+<section class="products" id="products">
+    <h2><span>Best </span>Products</h2>
+    <p>"Introducing our premier pet product for your furry companion's care and happiness."</p>
+    <div class="row">
+        <%
+            String url = "jdbc:mysql://switchback.proxy.rlwy.net:49496/petshop";
+            String username = "root";
+            String password = "CaxLOWsGEHcaUIMpeUqtCmLucuHVTNGS";
 
-                Connection conn = null;
-                Statement stmt = null;
-                ResultSet rs = null;
+            Connection conn = null;
+            Statement stmt = null;
+            ResultSet rs = null;
 
-                try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-                    conn = DriverManager.getConnection(url, username, password);
-                    stmt = conn.createStatement();
-                    String sql = "SELECT * FROM products";
-                    rs = stmt.executeQuery(sql);
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                conn = DriverManager.getConnection(url, username, password);
+                stmt = conn.createStatement();
+                String sql = "SELECT * FROM products";
+                rs = stmt.executeQuery(sql);
 
-                    while (rs.next()) {
-                        String productCode = rs.getString("product_code");
-                        String name = rs.getString("name");
-                        String description = rs.getString("description");
-                        double price = rs.getDouble("price");
-                        String image = rs.getString("image");
+                while (rs.next()) {
+                    String productCode = rs.getString("product_code");
+                    String name = rs.getString("name");
+                    String description = rs.getString("description");
+                    double price = rs.getDouble("price");
+                    byte[] imageBytes = rs.getBytes("image");
+                    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
-                        out.println("<div class='product-card'>");
-                        out.println("<div class='product-icons'>");
-                        out.println("<a href='cart.jsp'><i data-feather='shopping-bag'></i></a>");
-                        out.println("<a href='#' class='item-detail-button'><i data-feather='eye'></i></a>");
-                        out.println("</div>");
-                        out.println("<div class='product-image'>");
-                        out.println("<img src='data:image/jpeg;base64," + Base64.getEncoder().encodeToString(rs.getBytes("image")) + "' alt='" + name + "' />");
-                        out.println("</div>");
-                        out.println("<div class='product-content'>");
-                        out.println("<h3>" + name + "</h3>");
-                        out.println("<div class='product-stars'>");
-                        out.println("<i data-feather='star' class='star-full'></i>");
-                        out.println("<i data-feather='star' class='star-full'></i>");
-                        out.println("<i data-feather='star' class='star-full'></i>");
-                        out.println("<i data-feather='star' class='star-full'></i>");
-                        out.println("<i data-feather='star'></i>");
-                        out.println("</div>");
-                        out.println("<div class='product-price'>RM " + price + "</div>");
-                        out.println("</div>");
-                        out.println("</div>");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (rs != null) rs.close();
-                        if (stmt != null) stmt.close();
-                        if (conn != null) conn.close();
-                    } catch (SQLException se) {
-                        se.printStackTrace();
-                    }
-                }
-            %>
-        </div>
-    </section>
-
-    <jsp:include page="footer.jsp" />
-
-    <div class="modal" id="item-detail-modal">
-        <div class="modal-container">
-            <a href="#" class="close-icon"><i data-feather="x"></i></a>
-            <div class="modal-content">
-                <img src="img/product1.jpg" alt="Product 1" />
-                <div class="product-content">
-                    <h3>Product 1</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quas illum nulla possimus sunt suscipit aliquid unde, cupiditate tempora odio culpa facere, saepe impedit quo!</p>
-                    <div class="product-stars">
-                        <i data-feather="star" class="star-full"></i>
-                        <i data-feather="star" class="star-full"></i>
-                        <i data-feather="star" class="star-full"></i>
-                        <i data-feather="star" class="star-full"></i>
-                        <i data-feather="star"></i>
-                    </div>
-                    <div class="product-price">RM 500 <span>1000</span></div>
-                    <a href="#"><i data-feather="shopping-bag"></i><span>Add to Cart</span></a>
+        %>
+        <div class='product-card'>
+            <div class='product-icons'>
+                <form action="paymentMethode.jsp" method="post">
+                    <input type="hidden" name="name" value="<%= name %>">
+                    <input type="hidden" name="price" value="<%= price %>">
+                    <input type="hidden" name="image" value="<%= base64Image %>">
+                    <button type="submit" title="Buy Now" class="item-detail-button">
+                        <i data-feather="shopping-bag"></i>
+                    </button>
+                </form>
+            </div>
+            <div class='product-image'>
+                <img src='data:image/jpeg;base64,<%= base64Image %>' alt='<%= name %>' />
+            </div>
+            <div class='product-content'>
+                <h3><%= name %></h3>
+                <div class='product-stars'>
+                    <i data-feather='star' class='star-full'></i>
+                    <i data-feather='star' class='star-full'></i>
+                    <i data-feather='star' class='star-full'></i>
+                    <i data-feather='star' class='star-full'></i>
+                    <i data-feather='star'></i>
                 </div>
+                <div class='product-price'>RM <%= price %></div>
             </div>
         </div>
-    </div>
-
-    <div class="notification" id="notification">Product added to cart</div>
-
-    <input type="hidden" id="isLoggedIn" value="<%= session.getAttribute("username") != null %>">
-
-<script>
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', function() {
-            const product = JSON.parse(this.dataset.product);
-            fetch('ProductServlet', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    action: 'addToCart',
-                    productCode: product.productCode,
-                    name: product.name,
-                    price: product.price,
-                    image: product.image,
-                    quantity: 1 // Default quantity
-                })
-            }).then(response => response.text())
-            .then(data => {
-                addToCart(product);
-                showNotification();
-                renderCartItems();
-                openCart();
-            }).catch(error => console.error('Error:', error));
-        });
-    });
-
-    function showNotification() {
-        const notification = document.getElementById('notification');
-        notification.style.display = 'block';
-        setTimeout(() => {
-            notification.style.display = 'none';
-        }, 3000);
-    }
-
-    function openCart() {
-        const shoppingCart = document.querySelector(".shopping-cart");
-        shoppingCart.classList.add("active");
-    }
-
-    function addToCart(product) {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const productIndex = cart.findIndex((item) => item.productCode === product.productCode);
-        if (productIndex > -1) {
-            cart[productIndex].quantity += 1;
-        } else {
-            cart.push({ ...product, quantity: 1 });
-        }
-        localStorage.setItem("cart", JSON.stringify(cart));
-        renderCartItems();
-    }
-
-    function renderCartItems() {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const cartContainer = document.querySelector(".shopping-cart .cart-items");
-        cartContainer.innerHTML = "";
-        cart.forEach((item) => {
-            const cartItem = document.createElement("div");
-            cartItem.classList.add("cart-item");
-            cartItem.innerHTML = 
-                <img src="${item.image}" alt="${item.name}" />
-                <div class="item-detail">
-                    <h3>${item.name}</h3>
-                    <div class="item-price">RM ${item.price.toFixed(2)}</div>
-                    <div class="item-quantity">
-                        <button onclick="updateQuantity('${item.productCode}', -1)">-</button>
-                        <input type="number" value="${item.quantity}" readonly>
-                        <button onclick="updateQuantity('${item.productCode}', 1)">+</button>
-                    </div>
-                </div>
-                <i data-feather="trash-2" class="remove-item" onclick="removeFromCart('${item.productCode}')"></i>
-            ;
-            cartContainer.appendChild(cartItem);
-        });
-        feather.replace();
-    }
-
-    function updateQuantity(productCode, change) {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const productIndex = cart.findIndex((item) => item.productCode === productCode);
-        if (productIndex > -1) {
-            cart[productIndex].quantity += change;
-            if (cart[productIndex].quantity < 1) {
-                cart[productIndex].quantity = 1;
+        <%
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+                if (conn != null) conn.close();
             }
-            localStorage.setItem("cart", JSON.stringify(cart));
-            renderCartItems();
-        }
-    }
+        %>
+    </div>
+</section>
 
-    function removeFromCart(productCode) {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        cart = cart.filter((item) => item.productCode !== productCode);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        renderCartItems();
-    }
-
-    window.onload = function() {
-        renderCartItems();
-    };
-</script>
+<jsp:include page="footer.jsp" />
 
 <script>
-    feather.replace();
+    feather.replace(); // Important to render feather icons properly
 </script>
-<script src="js/script.js"></script>
 </body>
 </html>
